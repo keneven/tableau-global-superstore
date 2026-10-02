@@ -4,7 +4,8 @@
 ============================================================
 
 --- Profit Ratio ---
-SUM([Profit]) / SUM([Sales])
+// ZN guards against a divide-by-zero when a filtered view has no sales.
+ZN(SUM([Profit])) / ZN(SUM([Sales]))
 
 --- Avg Discount (sales-weighted) ---
 // AVG([Discount]) weights a 20% discount on a $5 order the same as a 20%
