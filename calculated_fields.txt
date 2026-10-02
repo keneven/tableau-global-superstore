@@ -6,8 +6,10 @@
 --- Profit Ratio ---
 SUM([Profit]) / SUM([Sales])
 
---- Avg Discount ---
-AVG([Discount])
+--- Avg Discount (sales-weighted) ---
+// AVG([Discount]) weights a 20% discount on a $5 order the same as a 20%
+// discount on a $5,000 order, which is not the discount the business gave.
+SUM([Discount] * [Sales]) / SUM([Sales])
 
 --- Average Order Value (AOV) ---
 SUM([Sales]) / COUNTD([OrderID])
